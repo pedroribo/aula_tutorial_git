@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <math.h>
 
-double f1(double);
-double f2(double);
+#include "myfunction.h"
+#include "myfunction2.h"
 
 int main() {
     printf("SEL0456 Trabalho 1\n");
