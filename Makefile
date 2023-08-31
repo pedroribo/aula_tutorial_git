@@ -2,24 +2,17 @@
 ##diversas funcoes.
 # E possivel chamar receitas especificas escrevendo: "make (nome_da_labe)"
 
-all: hello
+ALL = main
+all: $(ALL)
 
-hello: hello.o myfunctions.o myfunctions2.o
-	gcc -o hello hello.o myfunctions.o myfunctions2.o -lm
+main: hello.o myfunctions.o myfunctions2.o
+	gcc -o $@ $^ -lm
 
-myfunctions.o: myfunctions.c
-	gcc -c myfunctions.c
-
-myfunctions2.o: myfunctions2.c
-	gcc -c myfunctions2.c
+%.o: %.c
+	gcc -c $<
 
 clean:
 	rm -f *.s *.o output erro
 
 distclean: clean
-	rm -f hello
-
-hello.o: hello.c
-	gcc -c hello.c
-
-
+	rm -f $(ALL)
