@@ -4,11 +4,17 @@
 
 all: hello
 
-hello: hello.o
-	gcc -o hello hello.o -lm
+hello: hello.o myfunctions.o myfunctions2.o
+	gcc -o hello hello.o myfunctions.o myfunctions2.o -lm
+
+myfunctions.o: myfunctions.c
+	gcc -c myfunctions.c
+
+myfunctions2.o: myfunctions2.c
+	gcc -c myfunctions2.c
 
 clean:
-	rm -f hello.s output erro
+	rm -f *.s *.o output erro
 
 distclean: clean
 	rm -f hello
